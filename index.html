@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отчёт по Заданию 4 — Валидация формы с Cookies</title>
     <style>
         * {
             margin: 0;
@@ -126,38 +125,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>📋 Отчёт по Заданию 4</h1>
         <p class="subtitle">Валидация формы с использованием Cookies</p>
-
-        <!-- Информация о студенте -->
-        <div class="student-info">
-            <p><strong>Студент:</strong> Торгашов Эдуард Игоревич</p>
-            <p><strong>Логин:</strong> u82364</p>
-            <p><strong>Группа:</strong> [Ваша группа]</p>
-            <p><strong>Задание:</strong> Лабораторная работа №4</p>
-            <p><strong>Дата выполнения:</strong> 2026</p>
-        </div>
-
-        <!-- Описание задания -->
-        <div class="section">
-            <h2> Описание задания</h2>
-            <p>Реализовать проверку корректного заполнения обязательных полей формы с использованием Cookies. Валидация всех полей формы на бекэнде реализована регулярными выражениями.</p>
-            
-            <h3>Требования:</h3>
-            <ul>
-                <li>Валидация всех 8 полей формы на сервере (PHP)</li>
-                <li>Сохранение ошибок в Cookies до конца сессии</li>
-                <li>Сохранение значений полей в Cookies на 1 год</li>
-                <li>Подсветка полей с ошибками красным цветом</li>
-                <li>Восстановление значений формы из Cookies</li>
-                <li>Использование подготовленных запросов (PDO)</li>
-                <li>База данных в 3-й нормальной форме (3 таблицы)</li>
-            </ul>
-        </div>
 
         <!-- Структура базы данных -->
         <div class="section">
-            <h2>🗄️ Структура базы данных</h2>
+            <h2> Структура базы данных</h2>
             <p>База данных <code>u82364</code> содержит таблицу <code>application</code> со следующими полями:</p>
             
             <div class="screenshot">
@@ -166,18 +138,6 @@
             </div>
 
             <h3>Основные поля:</h3>
-            <ul>
-                <li><code>id</code> — AUTO_INCREMENT, первичный ключ</li>
-                <li><code>full_name</code> — VARCHAR(150), ФИО пользователя</li>
-                <li><code>phone</code> — VARCHAR(20), номер телефона</li>
-                <li><code>email</code> — VARCHAR(100), адрес электронной почты</li>
-                <li><code>birth_date</code> — DATE, дата рождения</li>
-                <li><code>gender</code> — ENUM('male', 'female'), пол</li>
-                <li><code>biography</code> — TEXT, биография</li>
-                <li><code>agreed</code> — TINYINT(1), согласие с контрактом</li>
-                <li><code>login</code> — VARCHAR(50), UNIQUE, логин для входа</li>
-                <li><code>password_hash</code> — VARCHAR(255), хеш пароля</li>
-            </ul>
         </div>
 
         <!-- Данные в базе -->
