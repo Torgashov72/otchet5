@@ -1,55 +1,258 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Отчет по заданию 2</title>
-  </head>
-  
-  <body>
-    <h1>Лабораторная работа №5</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчёт по Заданию 4 — Валидация формы с Cookies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+        .student-info p {
+            margin: 8px 0;
+            color: #2c3e50;
+        }
+        .student-info strong {
+            color: #667eea;
+        }
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .section h3 {
+            color: #34495e;
+            margin: 20px 0 10px 0;
+            font-size: 18px;
+        }
+        .screenshot {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .screenshot img {
+            max-width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .screenshot p {
+            margin-top: 10px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .links {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        li {
+            margin: 8px 0;
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Отчёт по Заданию 4</h1>
+        <p class="subtitle">Валидация формы с использованием Cookies</p>
 
-    <h2>Добавление полей login и password_hash в базу данных</h2>
-    <p style="font-size: 24px;">Подключился к MySQL через SSH: mysql -u u82361 -p
-       Выбрал базу данных: USE u82361;
-       Добавил поля командой: ALTER TABLE application ADD COLUMN login VARCHAR(50) UNIQUE, ADD COLUMN password_hash VARCHAR(32);
-       Проверил структуру таблицы: DESCRIBE application;</p>
-    <img src="img1.png" width="800">
+        <!-- Информация о студенте -->
+        <div class="student-info">
+            <p><strong>Студент:</strong> Торгашов Эдуард Игоревич</p>
+            <p><strong>Логин:</strong> u82364</p>
+            <p><strong>Группа:</strong> [Ваша группа]</p>
+            <p><strong>Задание:</strong> Лабораторная работа №4</p>
+            <p><strong>Дата выполнения:</strong> 2026</p>
+        </div>
 
-    <hr>
+        <!-- Описание задания -->
+        <div class="section">
+            <h2> Описание задания</h2>
+            <p>Реализовать проверку корректного заполнения обязательных полей формы с использованием Cookies. Валидация всех полей формы на бекэнде реализована регулярными выражениями.</p>
+            
+            <h3>Требования:</h3>
+            <ul>
+                <li>Валидация всех 8 полей формы на сервере (PHP)</li>
+                <li>Сохранение ошибок в Cookies до конца сессии</li>
+                <li>Сохранение значений полей в Cookies на 1 год</li>
+                <li>Подсветка полей с ошибками красным цветом</li>
+                <li>Восстановление значений формы из Cookies</li>
+                <li>Использование подготовленных запросов (PDO)</li>
+                <li>База данных в 3-й нормальной форме (3 таблицы)</li>
+            </ul>
+        </div>
 
-    <h2>Первая отправка формы и генерация логина/пароля</h2>
-    <p style="font-size: 24px;">При первой отправке формы происходит:
+        <!-- Структура базы данных -->
+        <div class="section">
+            <h2>🗄️ Структура базы данных</h2>
+            <p>База данных <code>u82364</code> содержит таблицу <code>application</code> со следующими полями:</p>
+            
+            <div class="screenshot">
+                <img src="db_structure.png" alt="Структура таблицы application">
+                <p>Рис. 1. Структура таблицы application (команда DESCRIBE)</p>
+            </div>
 
-Валидация всех полей формы
-Генерация уникального логина (функция generate_login())
-Генерация случайного пароля (функция generate_password())
-Хеширование пароля через md5()
-Сохранение всех данных в БД
-Отображение логина и пароля пользователю один раз</p>
-    <img src="img2.png" width="800">
+            <h3>Основные поля:</h3>
+            <ul>
+                <li><code>id</code> — AUTO_INCREMENT, первичный ключ</li>
+                <li><code>full_name</code> — VARCHAR(150), ФИО пользователя</li>
+                <li><code>phone</code> — VARCHAR(20), номер телефона</li>
+                <li><code>email</code> — VARCHAR(100), адрес электронной почты</li>
+                <li><code>birth_date</code> — DATE, дата рождения</li>
+                <li><code>gender</code> — ENUM('male', 'female'), пол</li>
+                <li><code>biography</code> — TEXT, биография</li>
+                <li><code>agreed</code> — TINYINT(1), согласие с контрактом</li>
+                <li><code>login</code> — VARCHAR(50), UNIQUE, логин для входа</li>
+                <li><code>password_hash</code> — VARCHAR(255), хеш пароля</li>
+            </ul>
+        </div>
 
-    <hr>
+        <!-- Данные в базе -->
+        <div class="section">
+            <h2>📊 Данные в базе данных</h2>
+            <p>После успешной отправки формы данные сохраняются в таблицу <code>application</code>:</p>
+            
+            <div class="screenshot">
+                <img src="db_data.png" alt="Данные в таблице application">
+                <p>Рис. 2. Просмотр записи из базы данных (SELECT WHERE id = 1)</p>
+            </div>
 
-    <h2>Проверка сохранённых данных в базе данных</h2>
-    <img src="img3.png" width="800">
+            <div class="code-block">
+SELECT id, email, full_name, login FROM application WHERE id = 1;
+            </div>
+        </div>
 
-    <hr>
+        <!-- Форма в браузере -->
+        <div class="section">
+            <h2>🌐 Работа формы в браузере</h2>
+            <p>После успешной авторизации пользователь может редактировать свои данные:</p>
+            
+            <div class="screenshot">
+                <img src="form_logged_in.png" alt="Форма после входа">
+                <p>Рис. 3. Форма с загруженными данными пользователя (логин: web5167)</p>
+            </div>
 
-    <h2>Вход в систему (авторизация)</h2>
-    <p style="font-size: 24px;">После получения логина и пароля, пользователь может войти для редактирования данных:
-Переход на страницу login.php
-Ввод логина и пароля
-Проверка через БД: сравнение хеша пароля
-Создание сессии: $_SESSION['login'] и $_SESSION['uid']
-Перенаправление на главную форму с загруженными данными</p>
-    <img src="img4.png" width="800">
+            <h3>Функционал:</h3>
+            <ul>
+                <li>Автоматическая подстановка данных из базы данных</li>
+                <li>Возможность редактирования всех полей</li>
+                <li>Валидация при сохранении</li>
+                <li>Кнопка «Выйти» для завершения сессии</li>
+            </ul>
+        </div>
 
-    <hr>
+        <!-- Валидация и Cookies -->
+        <div class="section">
+            <h2>🔒 Валидация и Cookies</h2>
+            <h3>Проверка полей:</h3>
+            <ul>
+                <li><strong>ФИО:</strong> только буквы и пробелы, до 150 символов</li>
+                <li><strong>Телефон:</strong> цифры, +, -, скобки, пробелы (10-20 символов)</li>
+                <li><strong>Email:</strong> проверка формата через FILTER_VALIDATE_EMAIL</li>
+                <li><strong>Дата рождения:</strong> формат ГГГГ-ММ-ДД, возраст 18+</li>
+                <li><strong>Пол:</strong> только 'male' или 'female'</li>
+                <li><strong>Языки:</strong> минимум 1 из списка (Pascal, C, C++, ...)</li>
+                <li><strong>Биография:</strong> до 5000 символов</li>
+                <li><strong>Контракт:</strong> обязательное согласие</li>
+            </ul>
 
-    <h2>Работа с Cookies</h2>
-    <p style="font-size: 24px;">Для неавторизованных пользователей данные формы сохраняются в Cookies</p>
-    <img src="img5.png" width="800">
+            <h3>Механизм Cookies:</h3>
+            <ul>
+                <li><code>*_error</code> — флаги ошибок (хранятся 1 день)</li>
+                <li><code>*_value</code> — значения полей (хранятся 1 год)</li>
+                <li><code>save</code> — флаг успешного сохранения (1 день)</li>
+                <li><code>new_login</code>, <code>new_pass</code> — сгенерированные учётные данные (1 минута)</li>
+            </ul>
+        </div>
 
-    
-  </body>
+        <!-- Ссылки -->
+        <div class="links">
+            <h2>🔗 Ссылки для проверки</h2>
+            <p><strong>Веб-страница с формой:</strong><br>
+            <a href="http://u82364.kubsu-dev.ru/web_task4/" target="_blank">http://u82364.kubsu-dev.ru/web_task4/</a></p>
+            
+            <p style="margin-top: 15px;"><strong>Репозиторий Git:</strong><br>
+            <a href="https://github.com/Torgashov72/web_task4" target="_blank">https://github.com/Torgashov72/web_task4</a></p>
+        </div>
+
+        <!-- Подвал -->
+        <div class="footer">
+            <p>Отчёт подготовлен в рамках курса «Программно-аппаратные средства Web»</p>
+            <p>Кубанский государственный университет, 2026</p>
+        </div>
+    </div>
+</body>
 </html>
